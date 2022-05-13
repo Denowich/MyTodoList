@@ -22,7 +22,7 @@ console.log('inputState', inputState);
     }
 
     // console.log('props',props); 
-  console.log('todoItem', props.todoItem);
+    console.log('todoItem', props.todoItem);
 
     return (
         <div className="todo-item">
@@ -49,7 +49,7 @@ console.log('inputState', inputState);
            <div> 
             <p>{todoItem}</p>
             <input type="checkbox" onChange={handleChange}/> */}
-        </div>
+          </div>
         </div>
     );
 }
