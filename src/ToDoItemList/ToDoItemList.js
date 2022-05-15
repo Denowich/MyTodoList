@@ -3,23 +3,21 @@ import "./todoItem.css";
 import TodoItemComponent from "./TodoItemComponent";
 import todosData from "../todosData";
 
-const ToDoItemList = (props) => {
+const ToDoItemList = () => {
   const [todoList, setTodoList] = useState(todosData);
-  console.log('todoList',todoList);
   return (
-    
     <div>
       {todoList.map(todoItem => {
-      return (
-        <TodoItemComponent
-          todoItem={todoItem} 
-          setTodoList={setTodoList}
-        />
-        
-      )
+        return (
+          <TodoItemComponent
+            key={todoItem.id}
+            todoItem={todoItem}
+            todoList={todoList}
+            setTodoList={setTodoList}
+          />
+        )
       })}
-      {/* // todoDescription={todo} */}
-      </div>
+    </div>
   );
 };
 
