@@ -1,29 +1,24 @@
 import React, { useState } from 'react';
 
-
 const TodoItemComponent = ({ todoItem, todoList, setTodoList }) => {
-  console.log('todoList', todoList)
-  console.log('todoItem', todoItem)
-
   const [inputState, setInputState] = useState('');
   const resolvedClass = {
-    textDecoration: "line-through"
-  }
+    textDecoration: 'line-through',
+  };
 
   const inputDescriptionHandler = (event) => {
-    setInputState(event.target.value)
-  }
+    setInputState(event.target.value);
+  };
 
   const onBlurDescriptionHandler = () => {
-    console.log('todoItem.id', todoItem.id)
-    const newTodoList = todoList.map(todo => {
+    const newTodoList = todoList.map((todo) => {
       if (todo.id === todoItem.id) {
         return { ...todo, description: inputState };
       }
       return todo;
     });
     setTodoList(newTodoList);
-  }
+  };
 
   return (
     <div className="todo-item">
@@ -39,14 +34,13 @@ const TodoItemComponent = ({ todoItem, todoList, setTodoList }) => {
       />
       <div className="input-wrapper">
 
-
         {/* <input
                 type="checkbox"
                 defaultChecked={props.completed}
                 onChange={props.handleChange}
               /> */}
         {/* </div>
-           <div> 
+           <div>
             <p>{todoItem}</p>
             <input type="checkbox" onChange={handleChange}/> */}
       </div>
