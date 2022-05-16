@@ -1,57 +1,51 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 
-
-const TodoItemComponent = (props) => {  
-//   const handleChange = (event) => {
-//       setTodoItem(event.target.value);
-//   }
-//   const [inputState, setInputState]=useState();
-const inputState = useRef() 
-console.log('inputState', inputState);
+const TodoItemComponent = ({ todoItem, todoList, setTodoList }) => {
+  const [inputState, setInputState] = useState('');
   const resolvedClass = {
-    textDecoration: "line-through"
-  } 
+    textDecoration: 'line-through',
+  };
 
-    const onFocusDescriptionHandler=(event)=> {
-    console.log('event', event);
-        inputState.current=(event.target.value);
-    }
+  const inputDescriptionHandler = (event) => {
+    setInputState(event.target.value);
+  };
 
-    const onBlurDescriptionHandler=()=>{
-        props.setTodolist(inputState.current);
-    }
+  const onBlurDescriptionHandler = () => {
+    const newTodoList = todoList.map((todo) => {
+      if (todo.id === todoItem.id) {
+        return { ...todo, description: inputState };
+      }
+      return todo;
+    });
+    setTodoList(newTodoList);
+  };
 
-    // console.log('props',props); 
-  console.log('todoItem', props.todoItem);
+  return (
+    <div className="todo-item">
+      <div className="description-wrapper">
+        <h4 style={{ marginBottom: 5 }}>{todoItem.description}</h4>
+      </div>
+      <input
+        type="text"
+        value={inputState}
+        onChange={inputDescriptionHandler}
+        onBlur={onBlurDescriptionHandler}
+        style={todoItem.completed === true ? resolvedClass : {}}
+      />
+      <div className="input-wrapper">
 
-    return (
-        <div className="todo-item">
-            <div className="description-wrapper">
-       <h4 style={{marginBottom: 5}}>{props.todoItem.description}</h4> 
-           </div>
-           <input 
-           type="text" 
-           value={inputState.current} 
-        //    onChange={inputDescriptionHandler}
-            onFocus={onFocusDescriptionHandler} 
-            onBlur={onBlurDescriptionHandler}
-          style={props.completed === true ? resolvedClass : {}}
-        />
-           <div className="input-wrapper">
-           
-              
-              {/* <input
+        {/* <input
                 type="checkbox"
                 defaultChecked={props.completed}
                 onChange={props.handleChange}
               /> */}
-           {/* </div>
-           <div> 
+        {/* </div>
+           <div>
             <p>{todoItem}</p>
             <input type="checkbox" onChange={handleChange}/> */}
-        </div>
-        </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default TodoItemComponent;
