@@ -34,15 +34,12 @@ const TodoItemComponent = ({ todoItem, todoList, setTodoList }) => {
       />
       <div className="input-wrapper">
 
+        {/* ToDo: Denys add checkbox to this component */}
         {/* <input
-                type="checkbox"
-                defaultChecked={props.completed}
-                onChange={props.handleChange}
-              /> */}
-        {/* </div>
-           <div>
-            <p>{todoItem}</p>
-            <input type="checkbox" onChange={handleChange}/> */}
+            type="checkbox"
+            defaultChecked={props.completed}
+            onChange={props.handleChange}
+        /> */}
       </div>
     </div>
   );
