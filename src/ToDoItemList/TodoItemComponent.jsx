@@ -19,7 +19,6 @@ const TodoItemComponent = ({ todoItem, todoList, setTodoList }) => {
     });
     setTodoList(newTodoList);
   };
-
   return (
     <div className="todo-item">
       <div className="description-wrapper">
